@@ -94,7 +94,7 @@ class RootViewModel {
     this.appName = ko.observable("App Name");
     // user Info used in Global Navigation area
 
-    this.userLogin = ko.observable("john.hancock@oracle.com");
+    this.userLogin = ko.observable("mann.shah@oracle.com");
     // footer
     this.footerLinks = [
       {name: 'About Oracle', linkId: 'aboutOracle', linkTarget:'http://www.oracle.com/us/corporate/index.html#menu-about'},
