@@ -6,40 +6,67 @@
  * @ignore
  */
 import * as AccUtils from "../accUtils";
+import * as ko from "knockout";
+import ArrayDataProvider = require('ojs/ojarraydataprovider');
+import "oj-c/input-text";
+import 'oj-c/input-number';
+import "ojs/ojknockout";
+import 'oj-c/form-layout';
+import 'oj-c/input-password';
+import 'oj-c/radioset';
+import 'oj-c/button';
+import 'ojs/ojlabelvalue';
+import 'ojs/ojlabel';
+import 'oj-c/checkbox';
+import "oj-c/menu-button";
+import 'ojs/ojprogress-bar';
+import 'oj-c/select-single';
+import 'oj-c/input-date-text';
+
+
+
+import { MenuItems, MenuSelection, CMenuButtonElement } from 'oj-c/menu-button';
+
+
+
+type DataType = {
+  value: string;
+  label: string;
+};
+
 class DashboardViewModel {
+  readonly progressValue = ko.observable();
+  readonly indeterminate = ko.observableArray();
+  username : ko.Observable<string>;
+  date : ko.Observable<Date> | ko.Observable<any>;
+  age : ko.Observable<number> | ko.Observable<any>;
+  currentColor: ko.Observable<string>;
+  colorOptions: Array<{ value: string; label: string }>;
+  browsersDP: ArrayDataProvider<string, DataType>;
 
-  constructor() {
+  
 
-  }
-
-  /**
-   * Optional ViewModel method invoked after the View is inserted into the
-   * document DOM.  The application can put logic that requires the DOM being
-   * attached here.
-   * This method might be called multiple times - after the View is created
-   * and inserted into the DOM and after the View is reconnected
-   * after being disconnected.
-   */
-  connected(): void {
-    AccUtils.announce("Dashboard page loaded.");
-    document.title = "Dashboard";
-    // implement further logic if needed
-  }
-
-  /**
-   * Optional ViewModel method invoked after the View is disconnected from the DOM.
-   */
-  disconnected(): void {
-    // implement if needed
-  }
-
-  /**
-   * Optional ViewModel method invoked after transition to the new View is complete.
-   * That includes any possible animation between the old and the new View.
-   */
-  transitionCompleted(): void {
-    // implement if needed
-  }
+  //browsersDP: ko.Observable<ArrayDataProvider<Object, Object>>;
+   constructor(){
+    this.username = ko.observable("");
+    this.age = ko.observable(null);
+    this.date = ko.observable(null)
+    this.currentColor = ko.observable("Male");
+      this.colorOptions = [
+        { value: "Male", label: "Male" },
+        { value: "Female", label: "Female" },
+      ];
+      let browsers = [
+        { value: 'indian', label: 'Indian' },
+        { value: 'american', label: 'American' },
+      ];
+      this.browsersDP = new ArrayDataProvider(browsers, {
+        keyAttributes: 'value'
+      });
+      
+   }
+  
+  
 }
 
 export = DashboardViewModel;
