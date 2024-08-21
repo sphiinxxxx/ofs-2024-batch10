@@ -57,8 +57,8 @@ class DashboardViewModel {
         { value: "Female", label: "Female" },
       ];
       let browsers = [
-        { value: 'indian', label: 'Indian' },
-        { value: 'american', label: 'American' },
+        { value: 'savings', label: 'Savings' },
+        { value: 'current', label: 'Current' },
       ];
       this.browsersDP = new ArrayDataProvider(browsers, {
         keyAttributes: 'value'
